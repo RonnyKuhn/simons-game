@@ -14,19 +14,27 @@ $("#highscore-title").text("Current Highscore " + 0);
 $(".btn").fadeTo(100, 0.3);
 
 $(".btn").click(buttonClicked);
+$("#level-title").click(startGame);
 
 // Listen for the event.
 document.addEventListener("nextLevel", startSequence);
 
 $(document).keypress(function (event) {
-    if (event.key == "Enter" && !started)
+    if (event.key == "Enter")
     {
-        
+        startGame();
+    }
+});
+
+function startGame()
+{
+    if (!started)
+    {
         started = true;
         currentLevel = 1;
         document.dispatchEvent(nextLevelEvent);
     }
-});
+}
 
 function buttonClicked()
 {
